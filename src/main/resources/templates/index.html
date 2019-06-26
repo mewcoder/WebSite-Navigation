@@ -1,0 +1,196 @@
+<!DOCTYPE html >
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>实用网站导航</title>
+    <link rel="shortcut icon" href="favcion.ico" />
+    <link rel="stylesheet"   href="/css/iconfont.css"/>
+    <link rel="stylesheet"    href="/css/style.css"/>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <aside class="left-bar" id="leftBar">
+            <div class="title">
+                <p>实用网站导航</p>
+            </div>
+            <nav class="nav">
+                <div class="item active"><a href=""><i class="iconfont icon-daohang2"></i>导航目录</a><i class="line"></i></div>
+                <ul class="nav-item" id="navItem">
+
+                    <li><a href="#study"><i class="iconfont icon-xuexi1"></i>学无止境</a></li>
+
+                    <li class="download"><a href=""><i class="iconfont icon-github"></i>源码下载</a></li>
+                </ul>
+                <div class="item comment"><a target="_blank" href="http://www.zcbboke.com/liuyan.html"><i class="iconfont icon-liuyan"></i>添加网站</a></div>
+            </nav>
+        </aside>
+
+        <section class="main">
+
+            <div id="mainContent">
+
+
+
+                <!-- 手机端菜单 -->
+                <div id="menu-box">
+                   <div id="menu">
+                       <input type="checkbox" id="menu-form">
+                       <label for="menu-form" class="menu-spin">
+                        <div class="line diagonal line-1"></div>
+                        <div class="line horizontal"></div>
+                        <div class="line diagonal line-2"></div>
+                      </label>
+                    </div>
+                </div>
+
+
+
+                <!-- all -->
+
+
+                <div class="box">
+                    <a href="#" name="1001"></a>
+
+                    <div class="sub-category">
+                        <div><i class="iconfont icon-xuexi1"></i>test</div>
+                    </div>
+
+                    <div th:each="site:${sites}">
+
+                        <a target="_blank"  th:href="@{${site.url}}">
+                            <div class="item">
+
+
+                                <div class="no-logo" th:text="${site.name}"/>
+
+                                <div class="desc" th:text="${site.description}"/>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 学无止境 -->
+                <div class="box">
+                    <a href="#" name="1001"></a>
+
+                    <div class="sub-category">
+                        <div><i class="iconfont icon-xuexi1"></i>学无止境</div>
+                    </div>
+
+                    <div>
+
+
+                        <a target="_blank" href="https://www.imooc.com/">
+                            <div class="item">
+                                <div class="no-logo">慕课网</div>
+                                <div class="desc">程序员的梦工厂</div>
+                            </div>
+                        </a>
+                        <a target="_blank" href="http://study.163.com/">
+                            <div class="item">
+                                <div class="no-logo">网易云课堂</div>
+                                <div class="desc">网易公司研发的一款大型在线教育平台服务</div>
+                            </div>
+                        </a>
+
+
+                        <a target="_blank" href="http://study.163.com/">
+                            <div class="item">
+                                <div class="no-logo">网易云课堂</div>
+                                <div class="desc">网易公司研发的一款大型在线教育平台服务</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <footer class="footer">
+                    <div class="copyright">
+                        <div>
+                            Copyright © 2019 Ctrlcoder
+                            <a href="/main">管理员登录</a>
+                        </div>
+                    </div>
+                </footer>
+
+
+                <div id="fixedBar"><svg class="Zi Zi--BackToTop" title="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path></svg></div>
+            </div>
+        </section>
+
+
+        <script  th:src="@{js/jquery.js}"></script>
+
+
+        <script>
+        var oMenu = document.getElementById('menu');
+        var oLeftBar = document.getElementById('leftBar');
+        var menuFrom = document.getElementById('menu-form');
+
+        oMenu.onclick = function() {
+            if (oLeftBar.offsetLeft == 0) {
+                oLeftBar.style.left = -249 + 'px';
+            }
+            else {
+                oLeftBar.style.left = 0;
+            }
+        }
+
+
+        // 监听页面宽度变化
+        window.onresize = function() {
+            judgeWidth();
+            // console.log(document.documentElement.clientWidth);
+        };
+
+        // 判断页面宽度
+        function judgeWidth() {
+            if (document.documentElement.clientWidth > 481) {
+                oLeftBar.style.left = 0;
+            } else {
+                oLeftBar.style.left = -249 + 'px';
+            }
+        }
+
+
+        var oNavItem = document.getElementById('navItem');
+        var aA = oNavItem.getElementsByTagName('a');
+        for (var i = 0; i < aA.length; i++) {
+            aA[i].onclick = function() {
+                for (var j = 0; j < aA.length; j++) {
+                    aA[j].className = '';
+                }
+                this.className = 'active';
+                if (oLeftBar.offsetLeft == 0) {
+                    if (document.documentElement.clientWidth <= 481) {
+                        oLeftBar.style.left = -249 + 'px';
+                        menuFrom.checked = false;
+
+                    }
+                }
+            }
+        }
+
+
+        $(window).scroll(function() {
+            if($(window).scrollTop() >= 200){
+                $('#fixedBar').fadeIn(300);
+            }else{
+                $('#fixedBar').fadeOut(300);
+            }
+        });
+        $('#fixedBar').click(function() {
+            $('html,body').animate({scrollTop:'0px'},800);
+        })
+        </script>
+
+    </div>
+</body>
+
+</html>

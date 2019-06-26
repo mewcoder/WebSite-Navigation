@@ -1,0 +1,79 @@
+<!DOCTYPE html >
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!--
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="img/head.png"
+                     class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>ROOT</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+            </div>
+        </div>
+         -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="header">菜单</li>
+            <li id="admin-index"><a
+                    href="/main"><i
+                    class="fa fa-dashboard"></i> <span>首页</span></a></li>
+
+            <li class="treeview"><a href="#"> <i class="fa fa-cogs"></i>
+                <span>用户管理</span> <span class="pull-right-container"> <i
+                        class="fa fa-angle-left pull-right"></i>
+				</span>
+
+
+            </a>
+                <ul class="treeview-menu">
+
+                    <li id="system-setting"><a
+                            href="/admin/"> <i
+                            class="fa fa-circle-o"></i> 用户管理
+                    </a></li>
+                    <li id="system-setting"><a
+                            href="/admin/">
+                        <i class="fa fa-circle-o"></i> 权限管理
+                    </a></li>
+                    <li id="system-setting"><a
+                            href="/admin/"> <i
+                            class="fa fa-circle-o"></i> 访问日志
+                    </a></li>
+                </ul>
+            </li>
+            <li class="treeview"><a href="#"> <i class="fa fa-cube"></i>
+                <span>数据管理</span> <span class="pull-right-container"> <i
+                        class="fa fa-angle-left pull-right"></i>
+				</span>
+            </a>
+                <ul class="treeview-menu">
+
+                    <li id="sitlist"><a
+                            href="/sitelist"> <i
+                            class="fa fa-circle-o"></i> 网站管理
+                    </a></li>
+
+                    <li id="system-setting"><a
+                            href="/admin/"> <i
+                            class="fa fa-circle-o"></i> 分类管理
+                    </a></li>
+
+                    <li id="system-setting"><a
+                            href="/admin/">
+                        <i class="fa fa-circle-o"></i> 待处理网站
+                    </a></li>
+
+
+                </ul>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+</html>
