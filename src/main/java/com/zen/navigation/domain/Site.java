@@ -1,16 +1,20 @@
 package com.zen.navigation.domain;
 
 public class Site {
-    private int wid;
+    private Integer wid;
     private String name;
     private String url;
     private String description;
     private int category;
-    private int liked;//点赞数
+    private Integer liked;//点赞数
     private boolean  state;//状态
 
-    public int getWid() {
+    public Integer getWid() {
         return wid;
+    }
+
+    public void setWid(Integer wid) {
+        this.wid = wid;
     }
 
     @Override
@@ -24,10 +28,6 @@ public class Site {
                 ", liked=" + liked +
                 ", state=" + state +
                 '}';
-    }
-
-    public void setWid(int wid) {
-        this.wid = wid;
     }
 
     public String getName() {
@@ -62,11 +62,11 @@ public class Site {
         this.category = category;
     }
 
-    public int getLiked() {
+    public Integer getLiked() {
         return liked;
     }
 
-    public void setLiked(int liked) {
+    public void setLiked(Integer liked) {
         this.liked = liked;
     }
 

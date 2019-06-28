@@ -1,5 +1,6 @@
 <!DOCTYPE html >
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- 页面meta -->
@@ -156,8 +157,8 @@
                网站管理
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-                <li><a href="#">数据管理</a></li>
+                <li><a href="/main"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li class="active">数据管理</li>
                 <li class="active">网站管理</li>
             </ol>
         </section>
@@ -169,7 +170,7 @@
             <!-- .box-body -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">列表</h3>
+                    <h3 class="box-title">网站列表</h3>
                 </div>
 
                 <div class="box-body">
@@ -181,26 +182,32 @@
                         <div class="pull-left">
                             <div class="form-group form-inline">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default" title="新建"
+                                    <button type="button" class="btn btn-default" title="添加"
                                             onclick="location.href='/siteadd'">
-                                        <i class="fa fa-file-o"></i> 新建
+                                        <i class="fa fa-file-o"></i> 添加
                                     </button>
+                                    <!--
                                     <button type="button" class="btn btn-default" title="删除"
-                                            onclick="location.href='/siteDel?wid'">
+                                            onclick="location.href='/sitedel?wid=${wid}'">
                                         <i class="fa fa-trash-o"></i> 删除
                                     </button>
+
                                     <button type="button" class="btn btn-default" title="开启">
                                         <i class="fa fa-check"></i> 开启
                                     </button>
                                     <button type="button" class="btn btn-default" title="屏蔽">
                                         <i class="fa fa-ban"></i> 关闭
                                     </button>
-                                    <button type="button" class="btn btn-default" title="刷新">
+                                       -->
+                                    <button type="button" class="btn btn-default" title="刷新"
+                                            onclick="location.href='/sitelist'">
                                         <i class="fa fa-refresh"></i> 刷新
                                     </button>
                                 </div>
                             </div>
                         </div>
+
+                        <!--
                         <div class="box-tools pull-right">
                             <div class="has-feedback">
                                 <input type="text" class="form-control input-sm"
@@ -208,6 +215,9 @@
                                     class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
                         </div>
+
+                        -->
+
                         <!--工具栏/-->
 
                         <!--数据列表-->
@@ -215,15 +225,17 @@
                                class="table table-bordered table-striped table-hover dataTable">
                             <thead>
                             <tr>
+                               <!--
                                 <th class="" style="padding-right: 0px;"><input
                                         id="wid" type="checkbox" class="icheckbox_square-blue">
                                 </th>
+                                -->
                                 <th class="sorting">ID</th>
+                                <th class="sorting">点赞数</th>
                                 <th class="text-center">名称</th>
                                 <th class="text-center">地址</th>
                                 <th class="text-center">描述</th>
                                 <th class="text-center">分类</th>
-                                <th class="sorting">点赞数</th>
                                 <th class="text-center">状态</th>
                                 <!--
                                  <th class="sorting">添加时间</th>
@@ -236,14 +248,20 @@
                             </thead>
                             <tbody>
                             <tr th:each="site:${sites}">
+                              <!--
                                 <td><input name="" type="checkbox" />
+                                -->
                                 <td  th:text="${site.wid}" />
+                                <td  th:text="${site.liked}" />
                                 <td  th:text="${site.name}" />
                                 <td  th:text="${site.url}" />
                                 <td  th:text="${site.description}" />
                                 <td  th:text="${site.category}" />
-                                <td  th:text="${site.liked}" />
                                 <td  th:text="${site.state}" />
+                                <td class="text-center">
+                                    <a class="btn bg-olive btn-xs" th:href="@{/siteedit(wid=${site.wid})}">编辑</a>
+                                    <a class="btn bg-olive btn-xs" th:href="@{/sitedel(wid=${site.wid})}">删除</a>
+                                </td>
                             </tr>
 
                             </tbody>

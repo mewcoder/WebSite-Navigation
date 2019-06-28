@@ -80,19 +80,18 @@
         <!-- 内容头部 -->
         <section class="content-header">
             <h1>
-                网站添加
+                网站编辑
 
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/main"><i class="fa fa-dashboard"></i> 首页</a></li>
                 <li class="active">数据管理</li>
                 <li><a href="/sitelist">网站管理</a></li>
+
             </ol>
         </section>
         <!-- 内容头部 /-->
-
-
-        <form action="#" th:action="@{/sitesave}" th:object="${site}" method="post">
+        <form action="#" th:action="@{/siteupdate}" th:object="${site}" method="post">
             <!-- 正文区域 -->
             <section class="content"> <!--信息-->
 
@@ -100,32 +99,45 @@
                     <div class="panel-heading">网站信息</div>
                     <div class="row data-type">
 
+                        <input  type="hidden" class="form-control"  th:field="*{wid}">
+
                         <div class="col-md-2 title">名称</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control"  placeholder="名称"  th:field="*{name}" />
+                            <input type="text" class="form-control"  th:field="*{name}"
+                                   />
                         </div>
 
                         <div class="col-md-2 title">地址</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" placeholder="地址"   th:field="*{url}" />
+                            <input type="text" class="form-control"  th:field="*{url}"
+                                  />
                         </div>
 
                         <div class="col-md-2 title">描述</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control"   placeholder="描述"  th:field="*{description}" />
+                            <input type="text" class="form-control"   th:field="*{description}"
+                                   />
                         </div>
 
-                        <!--分类  待写-->
+                        <!--分类-->
+                        <div class="col-md-2 title">点赞数</div>
+                        <div class="col-md-4 data">
+                            <input type="text" class="form-control"  th:field="*{liked}"
+                                   />
+                        </div>
+
+                        <!--分类-->
                         <div class="col-md-2 title">分类</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" placeholder="分类"   th:field="*{category}"/>
+                            <input type="text" class="form-control"  th:field="*{category}"
+                                    />
                         </div>
 
 
                         <div class="col-md-2 title">状态</div>
                         <div class="col-md-4 data">
-                            <select class="form-control select2" style="width:100%"   th:field="*{state}" >
-                                <option value="1" selected="selected">开启</option>
+                            <select class="form-control select2" style="width: 100%"  th:field="*{state}">
+                                <option value="1">开启</option>
                                 <option value="0">关闭</option>
                             </select>
                         </div>
@@ -135,7 +147,9 @@
                 <!--订单信息/--> <!--工具栏-->
                 <div class="box-tools text-center">
                     <button type="submit" class="btn bg-maroon">保存</button>
-                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+                    <button type="button" class="btn bg-default"
+                            onclick="history.back(-1);">返回
+                    </button>
                 </div>
                 <!--工具栏/--> </section>
             <!-- 正文区域 /-->

@@ -33,4 +33,16 @@ public class SiteService {
 
     }
 
+    public Site siteShow(int wid)throws Exception{
+
+        return siteDao.findByid(wid);
+
+    }
+
+
+    public void siteUpdate(Site site)throws Exception{
+
+        siteDao.siteUpdate(site);
+
+    }
 }
