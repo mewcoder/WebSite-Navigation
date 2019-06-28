@@ -29,3 +29,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+*.yml linguist-language=Java 
+*.html linguist-language=Java 
+*.js linguist-language=Java 
+*.xml linguist-language=Java
+*.css linguist-language=Java
+
