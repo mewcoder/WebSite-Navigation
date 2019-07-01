@@ -45,4 +45,11 @@ public class SiteService {
         siteDao.siteUpdate(site);
 
     }
+
+
+    public void siteUpdateLiked(int wid, int count) throws Exception {
+         siteDao.siteUpdateLiked(wid, count);
+    }
+
+
 }

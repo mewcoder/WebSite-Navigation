@@ -5,17 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>实用网站导航</title>
-    <link rel="shortcut icon" href="favcion.ico" />
+    <link rel="shortcut icon"  href="favcion.ico" />
     <link rel="stylesheet"   href="/css/iconfont.css"/>
     <link rel="stylesheet"    href="/css/style.css"/>
+    <link rel="stylesheet"  href="/admin/plugins/bootstrap/css/bootstrap.min.css">
+
 </head>
 
 <body>
-    <div class="container" id="container">
+
+    <div class="container0" id="container0">
+
+
         <aside class="left-bar" id="leftBar">
             <div class="title">
-                <p>实用网站导航</p>
+
+                <h3>实用网站导航</h3>
+
             </div>
+
+            <img  src="img/logo.png" />
+
             <nav class="nav">
                 <div class="item active"><a href=""><i class="iconfont icon-daohang2"></i>导航目录</a><i class="line"></i></div>
                 <ul class="nav-item" id="navItem">
@@ -24,11 +34,27 @@
 
                     <li class="download"><a href=""><i class="iconfont icon-github"></i>源码下载</a></li>
                 </ul>
-                <div class="item comment"><a target="_blank" href="http://www.zcbboke.com/liuyan.html"><i class="iconfont icon-liuyan"></i>添加网站</a></div>
+
+
             </nav>
+
+            <div class="share">
+                <button  type="button" class="btn btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">
+                    ✚分享你喜欢的网站
+                </button>
+
+            </div>
+
+
         </aside>
 
+
+
+
         <section class="main">
+
+
+
 
             <div id="mainContent">
 
@@ -51,6 +77,8 @@
                 <!-- all -->
 
 
+
+
                 <div class="box">
                     <a href="#" name="1001"></a>
 
@@ -60,22 +88,33 @@
 
                     <div th:each="site:${sites}">
 
-                        <a target="_blank"  th:href="@{${site.url}}">
+
                             <div class="item">
+                                <!--
+                                <img th:src="@{${site.url}+'/favicon.ico'}" width="20px"/>
+                                -->
 
 
-                                <div class="no-logo" th:text="${site.name}"/>
+                                <a target="_blank"  th:href="@{${site.url}}">
+                                    <span class="no-logo" th:text="${site.name}">  </span>
+                                </a>
 
-                                <div class="desc" th:text="${site.description}"/>
-                            </div>
-                        </a>
+                                <span class="glyphicon glyphicon-thumbs-up like "  th:onclick="addliked([[${site.wid}]])"> </span>
 
-                    </div>
+                                <!--   <button class="btn" th:onclick="addliked([[${site.wid}]])">获得名字</button>-->
 
-                </div>
+                                <sup id="likenum"  th:text="${site.liked}"></sup>
+
+                                      <div class="desc" th:text="${site.description}"/>
+                                  </div>
 
 
-                <!-- 学无止境 -->
+                          </div>
+
+                      </div>
+
+
+                      <!-- 学无止境 -->
                 <div class="box">
                     <a href="#" name="1001"></a>
 
@@ -92,6 +131,7 @@
                                 <div class="desc">程序员的梦工厂</div>
                             </div>
                         </a>
+
                         <a target="_blank" href="http://study.163.com/">
                             <div class="item">
                                 <div class="no-logo">网易云课堂</div>
@@ -113,8 +153,19 @@
                 <footer class="footer">
                     <div class="copyright">
                         <div>
-                            Copyright © 2019 Ctrlcoder
-                            <a href="/main">管理员登录</a>
+
+                            <strong>Copyright &copy; 2019 ctrlcoder
+                            </strong> All rights reserved.
+                            <a href="https://github.com/ctrlcoder">
+                            <button  type="button" class="btn btn-default  btn-sm"  >
+                               Github
+                            </button>
+                            </a>
+                            <a href="/main">
+                            <button  type="button" class="btn btn-warning btn-sm" >
+                                管理员登录
+                            </button>
+                            </a>
                         </div>
                     </div>
                 </footer>
@@ -122,13 +173,27 @@
 
                 <div id="fixedBar"><svg class="Zi Zi--BackToTop" title="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path></svg></div>
             </div>
+
+
+
+
         </section>
 
 
-        <script  th:src="@{js/jquery.js}"></script>
 
 
-        <script>
+
+
+    </div>
+
+
+    <script src="js/jquery.js"></script>
+
+    <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+
+    <script>
         var oMenu = document.getElementById('menu');
         var oLeftBar = document.getElementById('leftBar');
         var menuFrom = document.getElementById('menu-form');
@@ -188,9 +253,110 @@
         $('#fixedBar').click(function() {
             $('html,body').animate({scrollTop:'0px'},800);
         })
-        </script>
+    </script>
 
-    </div>
+<!--ajax做 -->
+    <form method="post" action="#" id="form_add" class="form-horizontal col-md-offset-4 col-md-4" >
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">添加网站</h4>
+                    </div>
+                    <div class="modal-body" >
+
+                        <div class="form-group">
+                            <label for="input1" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="input1" name="name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input2" class="col-sm-2 control-label">网址</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="input2" name="url" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input3" class="col-sm-2 control-label">描述</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="input3" name="description">
+                            </div>
+                        </div>
+
+                        <div class="form-group" >
+                            <label for="input4" class="col-sm-2 control-label">分类</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="input4" name="category">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="addtemp()">添加</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+<!-- ip
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+-->
+    <script type="text/javascript" >
+        function addtemp() {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型，或者用GET
+                dataType: "html",//预期服务器返回的数据类型，可以改成json
+                url: "/sitetemp" ,//ip:端口/项目名称/Servlet名称
+                data: $('#form_add').serialize(),//获取表单里的数据到这里
+                success: function (result) {
+                    var jsonobj= eval('(' + result + ')');
+                    alert(jsonobj.msg);
+                }
+            });
+        }
+
+        $(function () {
+            $(".like").click(function () {
+                $(this).toggleClass('cs');
+            })
+        })
+
+
+        function addliked(wid) {
+            var wid = wid;
+            $.ajax({
+                //几个参数需要注意一下
+                type: "GET",//方法类型，或者用GET
+                url: "/like?wid="+wid ,
+                success: function (result) {
+                    var jsonobj= eval('(' + result + ')');
+                    alert(jsonobj.msg);
+                }
+            });
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
 </body>
+
+
 
 </html>

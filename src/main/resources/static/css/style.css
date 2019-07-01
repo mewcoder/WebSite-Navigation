@@ -17,7 +17,7 @@ body {
 	font-family: Helvetica Neue,Microsoft Yahei
 }
 
-.container,.main,body {
+.container0,.main,body {
 	/*background: #f3f6f8*/
 }
 
@@ -26,20 +26,20 @@ body {
 	padding-right: 4px
 }
 
-.container .left-bar {
+.container0 .left-bar {
 	position: fixed;
 	padding: 0 20px;
-	background: #30333c;
+	background: #3F51B5;
 	color: #6b7386;
 	box-sizing: border-box;
 	flex-direction: column;
 	height: 100vh;
 	display: flex;
-	width: 248px;
+	width: 240px;
 	transition: all .5s
 }
 
-.container .main {
+.container0 .main {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -47,9 +47,10 @@ body {
 	margin-left: 248px
 }
 
-.container .main .iconfont {
-	font-size: 18px;
-	color: #000
+.container0 .main .iconfont {
+	font-size: 20px;
+	color: #000;
+	font-weight:700;
 }
 
 .set-scroll {
@@ -61,8 +62,8 @@ body {
 .left-bar .title {
 	color: #fff;
 	font-size: 18px;
-	height: 50px;
-	line-height: 50px
+	line-height: 50px;
+	margin: auto;
 }
 
 .left-bar .title p {
@@ -97,8 +98,8 @@ body {
 }
 
 .left-bar .nav-item {
-	min-height: 100vh;
-	overflow-y: scroll
+	min-height: 100%;
+	/*overflow-y: scroll*/
 }
 
 .left-bar .nav-item::-webkit-scrollbar-track {
@@ -131,31 +132,30 @@ body {
 
 .left-bar .nav-item li a {
 	text-decoration: none;
-	font-size: 12px;
+	font-size: 14px;
 	display: inline-block;
 	width: 100%;
-	color: #6b7386
+	color: #f5f5f5;
 }
 
 .nav .item a {
 	color: #fff
 }
 
-.nav .comment {
+.left-bar .share {
 	position: fixed;
 	z-index: 100;
-	bottom: 1px;
-	width: 200px;
-	background: #30333c
+	bottom: 15px;
+	width: 95%;
 }
 
 .main #mainContent {
-	max-width: 1200px
+	max-width: 90%;
 }
 
 .main .box {
 	overflow: hidden;
-	/*margin: 20px 30px;*/
+	margin: 20px auto;
 	background: #fff;
 	padding-bottom: 20px;
 	border-bottom: 2px solid rgba(0,0,0,.04);
@@ -174,7 +174,7 @@ body {
 	background: #fff;
 	padding: 10px;
 	min-width: 200px;
-	margin: 22px 0 0 2.1%;
+	margin: 10px 0 0 1%;
 	float: left;
 	overflow: hidden;
 	transition: all .3s
@@ -213,7 +213,7 @@ body {
 	color: gray;
 	font-size: 12px;
 	padding-top: 10px;
-	height: 35px;
+	height: 45px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
@@ -239,6 +239,7 @@ body {
 	text-decoration: none;
 	color: #3a85ff
 }
+
 
 #menu-box {
 	display: none;
@@ -311,7 +312,7 @@ body {
 }
 
 .download a,.download i {
-	color: #3668bd!important
+	color: rgba(0,0,0,.5)!important;
 }
 
 #fixedBar {
@@ -334,16 +335,16 @@ body {
 }
 
 @media screen and (max-width:481px) {
-	.container .box .item {
+	.container0 .box .item {
 		width: 39%;
 		min-width: 100px
 	}
 
-	.container .main {
+	.container0 .main {
 		margin-left: 0
 	}
 
-	.container .left-bar {
+	.container0 .left-bar {
 		z-index: 999;
 		left: -249px
 	}
@@ -354,29 +355,32 @@ body {
 }
 
 @media screen and (min-width:481px) {
-	.container .left-bar {
+	.container0 .left-bar {
 		left: 0
 	}
 }
 
 @media screen and (min-width:482px) and (max-width:789px) {
-	.container .box .item {
+	.container0 .box .item {
 		width: 90%
 	}
 
-	.container .left-bar {
+	.container0 .left-bar {
 		left: 0
 	}
 }
 
 @media screen and (min-width:790px) and (max-width:1039px) {
-	.container .box .item {
-		width: 43%
+	.container0 .box .item {
+		width: 10%;
 	}
 }
 
 @media screen and (min-width:1040px) and (max-width:1920px) {
-	.container .box .item {
-		width: 20%
+	.container0 .box .item {
+		width: 10%;
 	}
 }
+
+.like{ font-size:15px;  color:#ccc; cursor:pointer;}
+.cs{color:#f00;}

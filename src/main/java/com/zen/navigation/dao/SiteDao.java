@@ -40,4 +40,11 @@ public interface SiteDao {
             "category=#{category},state=#{state},liked=#{liked} " +
             "where wid=#{wid}")
     public void siteUpdate(Site site) throws Exception;
+
+
+
+    @Update("update websites SET liked=#{count} where wid=#{wid}")
+    public void siteUpdateLiked(int wid, int count) throws Exception;
+
+
 }
